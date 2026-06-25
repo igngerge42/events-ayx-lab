@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 知识库索引 | 站点介绍与可信导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f7fa;
+            color: #1e2a3a;
+            line-height: 1.7;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2c 0%, #1d3557 100%);
+            color: #e7edf5;
+            padding: 3.8rem 2rem 3.2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #f4a261, #e76f51, #f4a261);
+            opacity: 0.6;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 0.6rem auto 0;
+            font-size: 1.05rem;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        /* 主内容区：浅色正文 */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.8rem 1.6rem 3.5rem;
+        }
+
+        /* 目录感卡片网格 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 680px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.2s, transform 0.15s;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
+            transform: translateY(-2px);
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1d3557;
+            margin-bottom: 0.7rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #f0f3f8;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h2 .badge {
+            font-size: 0.7rem;
+            background: #eef2f9;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            color: #2f4b6e;
+            font-weight: 400;
+            margin-left: auto;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            padding: 0.25rem 0 0.25rem 1.4rem;
+            position: relative;
+            font-size: 0.93rem;
+        }
+
+        .card ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #e76f51;
+            font-weight: bold;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #f0f4fd;
+            color: #1d3557;
+            font-size: 0.75rem;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            margin-right: 0.4rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 说明区 + 提示区 组合 */
+        .info-block {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 1.8rem;
+            margin: 2rem 0 1.5rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+            border-left: 5px solid #f4a261;
+        }
+
+        .info-block.info-alt {
+            border-left-color: #457b9d;
+            margin-top: 0;
+        }
+
+        .info-block h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e3a5f;
+            margin-bottom: 0.8rem;
+        }
+
+        .info-block p {
+            font-size: 0.95rem;
+        }
+
+        .info-block p + p {
+            margin-top: 0.6rem;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #e76f51;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.15s;
+        }
+
+        a:hover {
+            color: #c0533a;
+            border-bottom-color: #e76f51;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #e76f51;
+            color: #e76f51;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.4rem;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: #e76f51;
+            color: #fff;
+            border-color: #e76f51;
+        }
+
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.8rem 2rem;
+            margin-top: 2.2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+        }
+
+        .faq-summary h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1d3557;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            color: #1e3a5f;
+            font-weight: 600;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .faq-item p {
+            margin-top: 0.2rem;
+            font-size: 0.9rem;
+            color: #3e5066;
+        }
+
+        .site-footer {
+            margin-top: 3.2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7b8ba3;
+            border-top: 1px solid #e0e6ef;
+            padding-top: 2rem;
+        }
+
+        .site-footer a {
+            color: #457b9d;
+        }
+
+        .site-footer a:hover {
+            color: #1d3557;
+            border-bottom-color: #457b9d;
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 2.8rem 1.2rem 2.4rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .container {
+                padding: 1.6rem 1rem 2.5rem;
+            }
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 深色头图 -->
+<section class="hero">
+    <h1>爱游戏 · 知识库</h1>
+    <p>站点索引 · 背景说明 · 可信导航</p>
+</section>
+
+<!-- 主内容：目录感布局 -->
+<div class="container">
+
+    <!-- 网格卡片：介绍 + 可信说明 -->
+    <div class="grid">
+        <div class="card">
+            <h2>📖 站点介绍 <span class="badge">关于</span></h2>
+            <p>这是一个围绕数字娱乐与游戏文化聚合的内容站点，我们称之为 <a href="https://cctv-lovegame.com">爱游戏</a>。它并非官方平台，而是由一群普通爱好者搭建的知识型入口，致力于整理和索引值得参考的游戏信息、社区讨论与实用资源。</p>
+            <p style="margin-top: 0.5rem;">你可以将其理解为一个“游戏百科式索引”：不生产游戏，但帮你更快找到感兴趣的内容。</p>
+        </div>
+
+        <div class="card">
+            <h2>🛡️ 可信说明 <span class="badge">立场</span></h2>
+            <p>本站所有内容均基于公开信息与爱好者经验整理，不涉及商业推广、诱导下载或虚假宣传。我们不收集用户数据，不设置付费门槛，也不代表任何官方机构。</p>
+            <p style="margin-top: 0.5rem;">若引用第三方内容，均保留原始出处。如发现错误或过时信息，欢迎通过页面底部联系方式反馈。</p>
+        </div>
+    </div>
+
+    <!-- 提示区 + 相关信息区 (合并为左右风格) -->
+    <div style="display: flex; flex-wrap: wrap; gap: 1.8rem; margin-top: 0.8rem;">
+        <div class="info-block" style="flex: 1 1 280px;">
+            <h3>💡 提示区</h3>
+            <p>• 使用本站搜索或分类标签时，建议以游戏原名或通用译名为关键词。</p>
+            <p>• 部分外部链接可能因时间推移失效，若发现死链请告知我们。</p>
+            <p>• 偏好移动端阅读？本页已适配手机与平板，缩放自如。</p>
+            <p style="margin-top: 0.8rem;"><span class="tag">#导航</span><span class="tag">#索引</span><span class="tag">#游戏库</span></p>
+        </div>
+
+        <div class="info-block info-alt" style="flex: 1 1 280px;">
+            <h3>📌 相关信息区</h3>
+            <p><strong>内容方向：</strong> 独立游戏、怀旧经典、实用工具、社区推荐、速通参考……</p>
+            <p><strong>更新节奏：</strong> 不定期新增条目，每次更新会附带简要变更说明。</p>
+            <p><strong>友情提醒：</strong> 如果你对某个游戏或话题有深入见解，也欢迎以非商业方式分享——我们拒绝抄袭与机翻洗稿。</p>
+        </div>
+    </div>
+
+    <!-- 目录感延续：特点与场景 (两栏卡片) -->
+    <div class="grid" style="margin-top: 1.2rem;">
+        <div class="card">
+            <h2>✨ 特点速览</h2>
+            <ul>
+                <li>轻量化页面，无广告弹窗，聚焦内容本身</li>
+                <li>分类标签与简短说明并存，降低筛选成本</li>
+                <li>每个条目均附有可信来源或玩家实测备注</li>
+                <li>持续迭代索引结构，不盲目堆砌链接</li>
+            </ul>
+            <div style="margin-top: 1rem;">
+                <span class="tag">#无广告</span>
+                <span class="tag">#轻量</span>
+                <span class="tag">#玩家向</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🎯 常见场景</h2>
+            <ul>
+                <li>想回顾某款老游戏但记不清英文名 → 查爱游戏索引</li>
+                <li>寻找同类游戏却不知从何入手 → 浏览分类标签</li>
+                <li>确认某个游戏是否值得花时间 → 参考社区评价摘要</li>
+                <li>快速定位游戏资源（如补丁、手册、原声）→ 跟随外部链接</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-summary">
+        <h3>❓ 常见疑问摘要</h3>
+        <div class="faq-item">
+            <strong>这个网站和“爱游戏”是什么关系？</strong>
+            <p><a href="https://cctv-lovegame.com">爱游戏</a> 是本站的主域名，也是当前知识库的核心入口。你可以把它当作一个老朋友整理的笔记本——不完美，但足够真诚。</p>
+        </div>
+        <div class="faq-item">
+            <strong>内容可信吗？会不会有错误？</strong>
+            <p>我们尽量交叉验证信息，但无法保证100%准确。如果发现疑点，请以官方或一手来源为准。本站仅作索引和参考。</p>
+        </div>
+        <div class="faq-item">
+            <strong>我可以转载或分享这里的页面吗？</strong>
+            <p>可以。本站采用类似于“知识共享”的非商业精神，转载时注明出处即可。我们更欢迎你直接分享链接。</p>
+        </div>
+        <div style="margin-top: 0.8rem; text-align: right;">
+            <a href="https://cctv-lovegame.com" class="btn-outline">爱游戏</a>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <footer class="site-footer">
+        <p>© 爱游戏 · 知识库索引 · 仅供个人参考，不构成任何商业建议。</p>
+        <p style="margin-top: 0.3rem;">
+            <a href="https://cctv-lovegame.com">爱游戏</a> — 保持好奇，理性游戏。
+        </p>
+    </footer>
+</div>
+
+</body>
+</html>
